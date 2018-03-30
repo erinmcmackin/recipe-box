@@ -2,27 +2,29 @@
 <html ng-app="RecipesApp">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Recipe Box</title>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
     <script src="/js/app.js" charset="utf-8"></script>
   </head>
   <body ng-controller="MainController as ctrl">
+    <h1>Recipe Box</h1>
     <form ng-submit="ctrl.createRecipe();">
       <input type="text" ng-model="ctrl.title" placeholder="Title"/><br>
       <input type="text" ng-model="ctrl.source" placeholder="Source"/><br>
       <input type="text" ng-model="ctrl.url" placeholder="url"/><br>
       <input type="submit" value="Add Recipe" />
     </form>
-    <table>
-      <tr>
-        <th>Recipe</th>
-        <th>Source</th>
-      </tr>
-      <tr ng-repeat="recipe in ctrl.recipes | orderBy: 'name'">
-        <td>{{recipe.title}}</td>
-        <td><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></td>
-        <td ng-click="ctrl.deleteRecipe(recipe)">x</td>
-      </tr>
-    </table>
+    <div class="recipe" ng-repeat="recipe in ctrl.recipes | orderBy: 'title'">
+      <h2>{{recipe.title}}</h2>
+      <p><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></p>
+      <button ng-click="ctrl.deleteRecipe(recipe)">Delete</button>
+      <button ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
+      <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editRecipe(recipe)">
+        <input type="text" ng-model="ctrl.updatedTitle" value="recipe.title" placeholder="{{recipe.title}}" /><br>
+        <input type="text" ng-model="ctrl.updatedSource" value="recipe.source" placeholder="{{recipe.source}}" /><br>
+        <input type="text" ng-model="ctrl.updatedURL" value="recipe.url" placeholder="{{recipe.url}}" /><br>
+        <input type="submit" value="Update">
+      </form>
+    </div>
   </body>
 </html>
