@@ -4,7 +4,6 @@ app.controller('MainController', ['$http', function($http){
   this.recipes = [];
 
   this.createRecipe = ()=>{
-
     $http({
       method: 'POST',
       url: '/recipes',
@@ -20,5 +19,17 @@ app.controller('MainController', ['$http', function($http){
     });
   };
 
+  this.getRecipes = ()=>{
+    $http({
+      method: 'GET',
+      url: '/recipes'
+    }).then((response)=>{
+      this.recipes = response.data;
+    }, (error)=>{
+      console.log(error);
+    });
+  };
+
+  this.getRecipes();
 
 }]);
