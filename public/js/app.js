@@ -30,6 +30,15 @@ app.controller('MainController', ['$http', function($http){
     });
   };
 
+  this.deleteRecipe = (recipe)=>{
+    $http({
+      method: 'DELETE',
+      url: '/recipes/' + recipe._id
+    }).then((response)=>{
+      this.getRecipes();
+    });
+  };
+
   this.getRecipes();
 
 }]);

@@ -21,6 +21,7 @@
       <tr ng-repeat="recipe in ctrl.recipes | orderBy: 'name'">
         <td>{{recipe.title}}</td>
         <td><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></td>
+        <td ng-click="ctrl.deleteRecipe(recipe)">x</td>
       </tr>
     </table>
   </body>
