@@ -1,3 +1,4 @@
+// Dependencies
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -6,12 +7,12 @@ const mongoose = require('mongoose');
 app.use(express.json());
 app.use(express.static('public'));
 
-app.get('/', (req, res)=>{
-    res.send('SENT');
-})
+// Controllers
+const recipesController = require( './controllers/recipes.js' );
+app.use('/recipes', recipesController);
 
 // Mongoose Connection
-mongoose.connect('mongodb://localhost:27017/recipes');
+mongoose.connect('mongodb://localhost:27017/recipe-book');
 mongoose.connection.once('open', ()=>{
     console.log('connected to mongoose...');
 });
