@@ -1,30 +1,41 @@
 <!DOCTYPE html>
 <html ng-app="RecipesApp">
-  <head>
-    <meta charset="utf-8">
-    <title>Recipe Box</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
-    <script src="/js/app.js" charset="utf-8"></script>
-  </head>
-  <body ng-controller="MainController as ctrl">
-    <h1>Recipe Box</h1>
-    <form ng-submit="ctrl.createRecipe();">
-      <input type="text" ng-model="ctrl.title" placeholder="Title"/><br>
-      <input type="text" ng-model="ctrl.source" placeholder="Source"/><br>
-      <input type="text" ng-model="ctrl.url" placeholder="url"/><br>
-      <input type="submit" value="Add Recipe" />
-    </form>
-    <div class="recipe" ng-repeat="recipe in ctrl.recipes | orderBy: 'title'">
-      <h2>{{recipe.title}}</h2>
-      <p><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></p>
-      <button ng-click="ctrl.deleteRecipe(recipe)">Delete</button>
-      <button ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
-      <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editRecipe(recipe)">
-        <input type="text" ng-model="ctrl.updatedTitle" value="recipe.title" placeholder="{{recipe.title}}" /><br>
-        <input type="text" ng-model="ctrl.updatedSource" value="recipe.source" placeholder="{{recipe.source}}" /><br>
-        <input type="text" ng-model="ctrl.updatedURL" value="recipe.url" placeholder="{{recipe.url}}" /><br>
-        <input type="submit" value="Update">
-      </form>
-    </div>
+    <head>
+        <meta charset="utf-8">
+        <title>Recipe Box</title>
+        <link rel="stylesheet" href="/css/app.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js" charset="utf-8"></script>
+        <script src="/js/app.js" charset="utf-8"></script>
+    </head>
+    <!-- Body -->
+    <body ng-controller="MainController as ctrl">
+        <!-- Header Div -->
+        <div class="header">
+            <h1>Recipe Box</h1>
+        </div>
+        <!-- Form to create recipe | inputs drawn from schema -->
+        <!-- Calls createRecipe() function upon submission -->
+        <form ng-submit="ctrl.createRecipe();">
+            <input type="text" ng-model="ctrl.title" placeholder="Title"/><br>
+            <input type="text" ng-model="ctrl.source" placeholder="Source"/><br>
+            <input type="text" ng-model="ctrl.url" placeholder="url"/><br>
+            <input type="submit" value="Add Recipe" />
+        </form>
+        <!-- Div that contains data produced from Create Form -->
+        <div class="recipe" ng-repeat="recipe in ctrl.recipes | orderBy: 'title'">
+            <h2>{{recipe.title}}</h2>
+            <p><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></p>
+            <button ng-click="ctrl.deleteRecipe(recipe)">Delete</button>
+            <button ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
+            <!-- Edit form that appears on 'edit' button click -->
+            <!-- Calls editRecipe function upon submission -->
+            <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editRecipe(recipe)">
+                <input type="text" ng-model="ctrl.updatedTitle" value="recipe.title" placeholder="{{recipe.title}}" /><br>
+                <input type="text" ng-model="ctrl.updatedSource" value="recipe.source" placeholder="{{recipe.source}}" /><br>
+                <input type="text" ng-model="ctrl.updatedURL" value="recipe.url" placeholder="{{recipe.url}}" /><br>
+                <input type="submit" value="Update">
+            </form>
+        </div>
+
   </body>
 </html>
