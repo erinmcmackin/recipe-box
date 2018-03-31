@@ -24,19 +24,18 @@
             <form ng-submit="ctrl.createRecipe();" class="create-form">
                 <h4>Post a Recipe!</h4>
                 <input type="text" ng-model="ctrl.title" placeholder="Add Title"/><br>
-                <input type="text" ng-model="ctrl.source" placeholder="Add Source"/><br>
+                <input type="text" ng-model="ctrl.source" placeholder="Add Website Name"/><br>
                 <input type="text" ng-model="ctrl.url" placeholder="Paste URL"/><br>
-                <input type="submit" value="Add Recipe" />
+                <input type="submit" value="Add Recipe"/>
             </form>
 
-            <!-- Div that contains data produced from Create Form -->
-            <div class="created-container">
-                <div class="created-recipe" ng-repeat="recipe in ctrl.recipes | orderBy: 'title'">
+            <!-- Div that contains displayed-data produced from Create Form -->
+            <div ng-repeat="recipe in ctrl.recipes | orderBy: 'title'" class="created-container">
+                <div class="created-recipe">
                     <h3>{{recipe.title}}</h3>
-                    <p><a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a></p>
-                    <button ng-click="ctrl.deleteRecipe(recipe)">Delete</button>
-                    <br>
-                    <button ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
+                    <a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a>
+                    <button name="delete" ng-click="ctrl.deleteRecipe(recipe)">X</button>
+                    <button name="edit" ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
                     <!-- Edit form that appears on 'edit' button click -->
                     <!-- Calls editRecipe function upon submission -->
                     <div class="edit-container">
