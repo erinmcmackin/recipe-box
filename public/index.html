@@ -34,8 +34,8 @@
                 <div class="created-recipe">
                     <h3>{{recipe.title}}</h3>
                     <a target="_blank" href="{{recipe.url}}">{{recipe.source}}</a>
-                    <button name="delete" ng-click="ctrl.deleteRecipe(recipe)">X</button>
-                    <button name="edit" ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
+                    <button name="edit" class="edit" ng-click="ctrl.indexOfEditFormToShow = $index">Edit</button>
+                    <button name="delete" class="delete" ng-click="ctrl.deleteRecipe(recipe)">X</button>
                     <!-- Edit form that appears on 'edit' button click -->
                     <!-- Calls editRecipe function upon submission -->
                     <div class="edit-container">
