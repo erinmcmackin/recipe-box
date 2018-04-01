@@ -23,9 +23,9 @@
                 <!-- Calls createRecipe() function upon submission -->
             <form ng-submit="ctrl.createRecipe();" class="create-form">
                 <h4>Post a Recipe!</h4>
-                <input type="text" ng-model="ctrl.title" placeholder="Add Title"/><br>
-                <input type="text" ng-model="ctrl.source" placeholder="Add Website Name"/><br>
-                <input type="text" ng-model="ctrl.url" placeholder="Paste URL"/><br>
+                <input name="create" type="text" ng-model="ctrl.title" placeholder="Add Title"/><br>
+                <input name="create" type="text" ng-model="ctrl.source" placeholder="Add Website Name"/><br>
+                <input name="create" type="text" ng-model="ctrl.url" placeholder="Paste URL"/><br>
                 <input type="submit" value="Add Recipe"/>
             </form>
 
@@ -40,9 +40,9 @@
                     <!-- Calls editRecipe function upon submission -->
                     <div class="edit-container">
                         <form ng-if="$index === ctrl.indexOfEditFormToShow" ng-submit="ctrl.editRecipe(recipe)">
-                            <input type="text" ng-model="ctrl.updatedTitle" value="recipe.title" placeholder="{{recipe.title}}" /><br>
-                            <input type="text" ng-model="ctrl.updatedSource" value="recipe.source" placeholder="{{recipe.source}}" /><br>
-                            <input type="text" ng-model="ctrl.updatedURL" value="recipe.url" placeholder="{{recipe.url}}" /><br>
+                            <input name="edit" type="text" ng-model="ctrl.updatedTitle" value="recipe.title" placeholder="{{recipe.title}}" /><br>
+                            <input name="edit" type="text" ng-model="ctrl.updatedSource" value="recipe.source" placeholder="{{recipe.source}}" /><br>
+                            <input name="edit" type="text" ng-model="ctrl.updatedURL" value="recipe.url" placeholder="{{recipe.url}}" /><br>
                             <input type="submit" value="Update">
                         </form>
                     </div>
