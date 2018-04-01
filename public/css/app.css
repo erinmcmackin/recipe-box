@@ -6,11 +6,13 @@ body {
     margin: 0px;
 }
 
+/* Div that containes all content within the body */
 .container {
     text-align: center;
     font-family: cursive;
 }
 
+/* Div block at top of page containing title */
 .header {
     background-color: rgb(50,50,50);
     width: 100%;
@@ -24,11 +26,13 @@ body {
     justify-content: flex-start;
 }
 
+/* Text in the header div */
 .title {
     margin-left: 50px;
     margin-top: 15px;
 }
 
+/* Form that allows user to save a new recipe */
 .create-form {
     margin: auto;
     width: 50%;
@@ -41,13 +45,14 @@ body {
     border-radius: 5px;
 }
 
+/* Header-text at top of description div */
 h4 {
     font-family: cursive;
     font-size: 28px;
     padding-top: 15px;
 }
 
-/* All textboxes */
+/* All textboxes within the create form */
 input[name="create"] {
     height: 25px;
     width: 85%;
@@ -56,6 +61,7 @@ input[name="create"] {
     padding: 5px;
 }
 
+/* The submit button within the create form */
 input[value="Add Recipe"] {
     background-color: white;
     color: black;
@@ -67,26 +73,34 @@ input[value="Add Recipe"] {
     margin-top: 10px;
 }
 
-.created-container {
-    margin: auto;
-    width: 250px;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: 5px 5px 8px #888888;
-}
-
+/* Div that holds the displayed-data for an individual recipe */
 .created-recipe {
     width: 250px;
     height: 25px;
-    background-color: rgb(50,50,50);
+    border: 1px solid red;
+    background-color: white;
     padding-top: 10px;
+    display: block;
 }
 
+/* Div that contains all created recipe divs */
+.created-container {
+    margin: auto;
+    width: 250px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 8px #888888;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+/* The NAME of a recipe which can be clicked to redirect to url */
 a {
     color: black;
     text-decoration: none;
 }
 
+/* Div that holds the app description at the top of the page */
 .description-container {
     background-color: white;
     margin: 150px;
@@ -98,6 +112,7 @@ a {
     border-radius: 5px;
 }
 
+/* Delete button in the created-recipe div */
 button[name="delete"] {
     border: none;
     background-color: rgb(50,50,50);
@@ -106,6 +121,7 @@ button[name="delete"] {
     float: right;
 }
 
+ /* Edit button in the created-recipe div */
 button[name="edit"] {
     color: white;
     margin-left: 75px;
@@ -114,11 +130,13 @@ button[name="edit"] {
     border: none;
 }
 
+/* Div that holds the edit form | Appears upon 'edit btn' click  */
 .edit-container {
     margin-left: 100%;
     padding-right: 200px;
 }
 
+/* Submit button within the edit form */
 input[value="Update"] {
     background-color: white;
     color: black;
@@ -128,6 +146,7 @@ input[value="Update"] {
     box-shadow: 1px 1px 1px #000000;
 }
 
+/* All textboxes within the edit form */
 input[name="edit"] {
     height: 25px;
     width: 200px;
